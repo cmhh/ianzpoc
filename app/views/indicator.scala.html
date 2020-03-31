@@ -1,0 +1,194 @@
+@(name: String)(data: Data)
+@title = @{
+  if (!data.config.contains(name)) 
+    "Oooooops!"
+  else
+    data.config(name).name 
+}
+
+@if(!data.config.contains(name)) {
+  @main(title) {
+    <main id="main" class="main">
+      <div class="container">
+        <h1>Sorry, we couldn't find that indicator...</h1>
+        <p>Return to <a href=/>main page</a>.</p>
+      </div>
+    </main>
+  }
+} else {
+  @main(title){
+    <main id="main" class="main">
+      <div class="container indicator">
+        <!-- HERO SECTION -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="indicator-hero-image">
+              <img src="@{data.images(name)}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h1 class="indicator-hero-title">@{title}</h1>
+            <div class="indicator-hero-intro">
+              @Html(data.config(name).description)
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="indicator-box-right">
+              <div class="indicator-box-right__description"></div>
+              <div class="indicator-box-right__percentage">@{data.config(name).factoidValue}</div>
+              <div class="indicator-box-right__precentage-description">@Html(data.config(name).factoidDescription)</div>
+            </div>
+          </div>
+        </div>
+        <!--HERO SECTION ENDS -->
+        <div class="row">
+          <div class="col-md-3 secondary-nav-col secondary-mobile">
+            <div id="Products" class="category">
+              <h2 class="h4 secondary-nav-title">Related topics</h2>
+              <ul class="secondary-nav">
+                @for(ind <- data.config.keys){
+                  <li><a href=/indicator/@ind class="related-pages-link">@{data.config(ind).name}</a></li>
+                }
+                <li class="navbar-toggle"><i class="fa fa-ellipsis-h"></i></li>
+              </ul>
+  
+              <script async src="@routes.Assets.versioned("javascripts/main(3).js")"></script>
+  
+              <!-- Secondary Mobile Navigation -->
+              <div class="navbar-collapse secondary-slide-nav">
+                <div> 
+                  <button id="close" type="button" class="man navbar-toggle collapsed" data-toggle="collapse" 
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle menu</span><i class="fa fa-times"></i>
+                  </button>
+                </div>
+                <div class="col-md-3 secondary-nav-col">
+                  <div id="Products" class="category secondary-slide-nav">
+                    <h2 class="h4 secondary-nav-title">Related topics</h2>
+                    <ul class="secondary-nav">                      
+                      @for(ind <- data.config.keys){
+                        <li><a href=/indicator/@ind class="related-pages-link">@{data.config(ind).name}</a></li>
+                      }
+                    </ul>
+                    <div class="clear">
+                      <!-- -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Secondary Mobile Navigation-->
+            </div>
+          </div>
+          <div class="col-md-9 indicator-grid main-indicator-content">
+            <div class="indicator-metadata-container row">
+              <div class="col-md-4 col-xs-6">
+                <div class="row heading">
+                  Last updated
+                </div>
+                <div class="row">
+                  @{data.metadata(name).date}
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-6">
+                <div class="row heading">
+                  Frequency
+                </div>
+                <div class="row">
+                  @{data.metadata(name).frequency}
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-6">
+                <div class="row heading">
+                  Source
+                </div>
+                <div class="row source">
+                  <a href="@{data.metadata(name).url}">@Html(data.metadata(name).source)</a>
+                </div>
+              </div>
+            </div>
+  
+            <div class="element silverstripe__highchart__block__highchartblock">
+              <div id="exTab1" class="tabs">	
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a  href="#1a" data-toggle="tab" class="graphButton">Chart</a>
+                  </li>
+                  <li>
+                    <a href="#2a" data-toggle="tab" class="tableButton">Table</a>
+                  </li>
+                </ul>
+              
+                <div class="tab-content clearfix">
+                  <div class="tab-pane active" id="1a">
+
+                    @Html(data.datasets(name).barplot(data.datasets(name).names(0), Some(data.metadata(name).measure)))
+  
+                  </div>
+                  <div class="tab-pane" id="2a">
+
+                    <h4>
+                      @Html(data.metadata(name).measure)
+                    </h4>
+                    &nbsp;
+                    @Html(data.datasets(name).keep(data.datasets(name).names(0)).toHTML)
+
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <row>
+              <div class="element dnadesign__elemental__models__elementcontent" id="e2347">
+                <div class="content-element__content">
+                  <p class="footnote">
+                    Note: @Html(data.metadata(name).caveats.mkString("<br>"))
+                  </p>
+                </div>
+              </div>
+              <div class="element silverstripe__document__block__documentblock" id="e1583">
+                <h2>File download (full data)</h2>
+                <div class="bottom-buffer download-document-container ">
+                  <div class="row download-document">
+                    <div class="col-sm-6 ">
+                      <div>
+                        <a href="/api/dataset?id=@{data.names(name)}">@title downloadable</a>
+                      </div>
+                      <div>
+                        Comma Separated Values File (CSV)
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <a href="/api/dataset?id=@{data.names(name)}" class="btn-data-download pull-right">
+                        <span class="btn-data-download-title">Download</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="element silverstripe__document__block__documentblock" id="e1580">
+                <h2>File download (metadata)</h2>
+                <div class="bottom-buffer download-document-container ">
+                  <div class="row download-document">
+                    <div class="col-sm-6 ">
+                      <div>
+                        <a href="/api/metadata?id=@{data.names(name)}" target="_blank">@title metadata</a>
+                      </div>
+                      <div>
+                        JavaScript Object Notation (JSON)
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <a href="/api/metadata?id=@{data.names(name)}" class="btn-data-download pull-right" target="_blank">
+                        <span class="btn-data-download-title">Download</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </row>
+          </div>
+        </div>
+      </div>
+    </main>  
+  }
+}

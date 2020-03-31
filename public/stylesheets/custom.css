@@ -1,0 +1,30 @@
+p.footnote {
+  font-size: 11px;
+}
+
+ul.nav-tabs > li {
+  width: 50%;
+  text-align: center;
+}
+
+a.graphButton, a.tableButton {
+  width: 100%;
+  border-bottom-width: 3px!important;
+  padding: 15px!important;
+}
+
+.nav-tabs > li.active, .nav-tabs > li.active > :hover, .nav-tabs > li.active > a, .nav-tabs > li.active > a > :hover {
+  border-bottom-color: rgb(0, 92, 117)!important;
+  background-color: rgba(0, 92, 117, 0.1)!important;
+  color: rgb(0,0,0)!important;
+}
+
+@media screen and (min-width: 990px) {
+  .indicator-metadata-container, .element {
+    margin-left: -20px; 
+  }
+
+  .category {
+    margin-right: 20px;
+  }
+}

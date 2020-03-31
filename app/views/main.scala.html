@@ -1,0 +1,117 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html class="no-js" lang="en-NZ">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base href=".">
+  <!--[if lte IE 6]></base><![endif]-->
+  <title>@title | Ng&#x101; Tūtohu Aotearoa – Indicators Aotearoa New Zealand</title>
+  <meta name="viewport" id="viewport"
+    content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+  <link rel="icon" href="@routes.Assets.versioned("images/favicon.png")" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/tnw4kme.css")">
+  <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/main.css")">
+  <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/custom.css")">
+  <script src="@routes.Assets.versioned("javascripts/plotly-latest.min.js")" charset="utf-8"></script>
+</head>
+
+<body class="Indicator">
+  <header class="header">
+    <div class="container site-header">
+      <div class="skip-links">
+        <a href="#main">Skip to main content</a>
+      </div>
+      <row>
+        <div class="col-md-10">
+          <div class="site-header-brand">
+            <a title="Go to Home Page" class="site-header-brand-link-default" href="/">
+              <img class="desktop-logo-image" src="@routes.Assets.versioned("images/header-en-lg.svg")" width="1355" height="135"
+                alt="Ng&#x101; Tūtohu Aotearoa – Indicators Aotearoa New Zealand" aria-hidden="true">
+              <img class="desktop-logo-image-md" src="@routes.Assets.versioned("images/header-en-md.svg")" width="1355"
+                height="135" alt="Ng&#x101; Tūtohu Aotearoa – Indicators Aotearoa New Zealand" aria-hidden="true">
+              <img class="mobile-logo-image" src="@routes.Assets.versioned("images/header-en-sm.svg")" width="1355" height="135"
+                alt="Ng&#x101; Tūtohu Aotearoa – Indicators Aotearoa New Zealand" aria-hidden="true">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+      </row>
+    </div>
+
+    <script type="application/javascript" src="@routes.Assets.versioned("javascripts/jquery-3.3.1.min.js")"></script>
+    <script type="application/javascript" src="@routes.Assets.versioned("javascripts/main.js")"></script>
+    <script type="application/javascript" src="@routes.Assets.versioned("javascripts/main(1).js")"></script>
+    <script type="application/javascript" src="@routes.Assets.versioned("javascripts/main(2).js")"></script>
+    <script type="application/javascript" src="@routes.Assets.versioned("javascripts/statsnav.js")"></script>
+    <div class="main-nav">
+      <nav class="navbar navbar-default" aria-label="Main navigation">
+        <div class="container">
+          <div class="row">
+            <!-- removed -->
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  @content
+
+  <!---->
+  <footer class="footer-site">
+    <footer class="page-footer">
+      <div class="container">
+        <row>
+          <div class="col-md-6">
+            <ul class="page-footer__list list-unstyled">
+              <li>
+              </li>
+              <li>
+              </li>
+              <li>
+                <span>
+                  Tirohia t&#x113;nei wharangi i
+                  <a href="https://indicators.cwp.govt.nz/mi/nga-mauiui-ka-taea-te-ki-na-te-ahua-o-te-hau-te-take/"
+                    lang="mi-NZ">Te reo M&#x101;ori</a>
+                </span>
+              </li>
+              <li>
+                <a href="https://indicators.cwp.govt.nz/en/contact-us/">Contact Stats NZ</a>
+              </li>
+              <li>
+                <a href="https://indicators.cwp.govt.nz/en/sitemap">Sitemap</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="page-footer__list list-unstyled">
+              <li>
+                <a href="https://indicators.cwp.govt.nz/en/terms-and-conditions/">Terms and conditions</a>
+              </li>
+              <li>
+                <a href="https://indicators.cwp.govt.nz/en/privacy">Privacy</a>
+              </li>
+              <li>
+                <a href="https://indicators.cwp.govt.nz/en/copyright">Copyright</a>
+              </li>
+            </ul>
+          </div>
+        </row>
+        <row>
+          <div class="col-md-6">
+            <a href="https://www.stats.govt.nz/">
+              <img src="@routes.Assets.versioned("images/StatsNZ-logo-white.svg")">
+            </a>
+          </div>
+          <div class="col-md-6 footer-govt-logo">
+            <a href="https://www.govt.nz/">
+              <img src="@routes.Assets.versioned("images/New-Zealand-Government-logo.svg")">
+            </a>
+          </div>
+        </row>
+      </div>
+    </footer>
+  </footer>
+</html>

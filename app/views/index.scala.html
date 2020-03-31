@@ -1,0 +1,11 @@
+@(data: Data)
+
+@main("Main Page") {
+  <main id="main" class="main">
+    <div class="container">
+      @for(ind <- data.config.keys){
+        <a href=/indicator/@ind target="_blank">@{data.config(ind).name}</a><br>
+      }
+    </div>
+  </main>
+}
