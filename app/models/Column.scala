@@ -1,5 +1,8 @@
 package models
 
+/**
+ * Simple generic class to represent a column in a dataset.
+ */
 class Column[T](val value: IndexedSeq[T]) {
   def filter(f: T => Boolean): Column[T] = 
     new Column(value.filter(f))
@@ -18,7 +21,3 @@ class Column[T](val value: IndexedSeq[T]) {
     new Column(value.zip(x).filter(_._2 == true).map(_._1))
   }
 }
-
-class NumericColumn(value: IndexedSeq[Double]) extends Column[Double](value)
-class StringColumn(value: IndexedSeq[String]) extends Column[String](value)
-class DateColumn(value: IndexedSeq[Date]) extends Column[Date](value)

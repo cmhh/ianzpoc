@@ -3,6 +3,9 @@ package models
 import java.io.{ File }
 import scala.io.Source
 
+/**
+ * Bespoke metadata representation.
+ */
 case class Metadata(
   name: String, source: String, url: String, agency: String,
   date: String, measurementType: String, measure: String, 

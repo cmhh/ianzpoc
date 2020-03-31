@@ -3,6 +3,10 @@ package models
 import java.io.File
 import scala.io.Source
 
+/**
+ * Bespoke CSV representation.
+ * Stores contents of a CSV file as a vector of String arrays.
+ */
 case class CSV(header: Array[String], body: IndexedSeq[Array[String]]) {
   require(body.map(_.size).distinct.size == 1)
   require(header.size == body(0).size)

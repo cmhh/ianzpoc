@@ -1,5 +1,8 @@
 package models
 
+/**
+ * Bespoke date class.
+ */
 case class Date(
   year: Int, 
   period: Option[Int] = None, frequency: Option[Int] = None, 

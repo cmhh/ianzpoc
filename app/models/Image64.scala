@@ -4,6 +4,9 @@ import java.io.File
 import java.nio.file.Files
 import java.util.Base64
 
+/**
+ * Return base64 string representation of a JPEG file.
+ */
 object Image64 {
   def apply(file: File): String = {
     val bytes = Files.readAllBytes(file.toPath)  

@@ -2,6 +2,12 @@ package models
 
 import java.io.File
 
+/**
+ * Bespoke data frame representation.
+ *
+ * Assumes a period column (Date), several columns for categorical variables (String), 
+ * a column for values (Value), and an optional column for sampling errors (Value).
+ */
 case class DataSet(
   dates: Column[Date], values: Column[Value], 
   byvars: IndexedSeq[Column[String]], names: IndexedSeq[String],
@@ -13,6 +19,9 @@ case class DataSet(
 
   def col(name: String): Column[String] = byvars(names.indexOf(name))
 
+  /**
+   * Use a Boolean sequence to subset--values are returned where the input sequence is true.
+   */
   def subset(x: Seq[Boolean]): DataSet = {
     val newdates = dates.subset(x)
     val newvals = values.subset(x)
@@ -24,6 +33,10 @@ case class DataSet(
     new DataSet(newdates, newvals, newbyvars, names, newses)
   }
 
+  /**
+   * Drop all but named columns and return as a dataset.
+   * Rows are only retained where dropped columns are 'totals'.
+   */
   def keep(cols: IndexedSeq[String]): DataSet = {
     val drop = names.diff(cols)
 
@@ -61,6 +74,9 @@ case class DataSet(
     x.zip(y).map(z => z._1 & z._2)
   }
 
+  /**
+   * CSV representation.
+   */
   def toCSV: String =  {
     def row(i: Int): String = {
       val x = {
@@ -92,6 +108,9 @@ case class DataSet(
     hdr.mkString(",") + rows
   }
 
+  /**
+   * HTML representation.
+   */
   def toHTML: String = {
     def row(i: Int): String = {
       val x = {
@@ -123,6 +142,10 @@ case class DataSet(
     "<table>" + "<tr>" + hdr.map("<th>" + _ + "</th>").mkString + "</tr>" + rows + "</table>"
   }
 
+  /**
+   * Simple barplot (using Plotly).
+   * A single byvar is selected, and Period is used to group.
+   */
   def barplot(byvar: String, title: Option[String] = None): String = {
     val data = keep(byvar)
     val periods = data.dates.value.distinct
@@ -180,39 +203,3 @@ case object DataSet {
   def apply(file: String): DataSet = DataSet(CSV(file))
   def apply(file: File): DataSet = DataSet(CSV(file))
 }
-
-/*
-import models._
-import java.io.File
-
-val csv = CSV(new File("public/data/indicators/engagement_in_cultural_activities.csv"))
-val ds = DataSet(csv)
-
-
-import models._
-import java.io.File
-
-val csv = CSV(new File("public/data/indicators/illness_attributable_to_air_quality.csv"))
-val ds = DataSet(csv)
-
-
-import models._
-import java.io.File
-
-val csv = CSV(new File("public/data/indicators/overcrowding.csv"))
-val ds = DataSet(csv)
-
-
-import models._
-import java.io.File
-
-val csv = CSV(new File("public/data/indicators/housing_affordability.csv"))
-val ds = DataSet(csv)
-
-
-import models._
-import java.io.File
-
-val csv = CSV(new File("public/data/indicators/te_reo_maori_speakers.csv"))
-val ds = DataSet(csv)
-*/

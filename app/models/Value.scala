@@ -1,5 +1,8 @@
 package models
 
+/**
+ * Simple value class that can be null.
+ */
 case class Value(value: Option[Double]) {
   override def toString = value match {
     case None => ""

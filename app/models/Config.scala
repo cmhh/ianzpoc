@@ -3,6 +3,9 @@ package models
 import java.io.{ File }
 import scala.io.Source
 
+/**
+ * Simple configuration for indicator.
+ */
 case class Config(
   name: String, description: String,
   factoidValue: String, factoidDescription: String

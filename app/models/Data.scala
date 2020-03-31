@@ -5,13 +5,20 @@ import scala.io.Source
 import java.io.File
 import play.api.Configuration
 
+/**
+ * Simple data class.
+ * Functions as a simple site-wide database.  
+ * Reads a collection of files from a configured folder on start-up.
+ */
 @Singleton
 class Data @Inject() (conf: Configuration) {
   val (config, metadata, images, datasets) = load
 
+  // id -> key
   val ids: Map[Int, String] = 
     (1 to config.keys.size).zip(config.keys.toVector.sorted).toMap
 
+  // key -> id
   val names: Map[String, Int] = 
     ids.keys.map(key => (ids(key), key)).toMap
 
