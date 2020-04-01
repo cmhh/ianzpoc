@@ -87,7 +87,7 @@ case class DataSet(
       { 
         ses match {
           case None => Nil
-          case Some(x) => x.value(i).toString
+          case Some(x) => Vector(x.value(i).toString)
         }
       }
       "\n" + x.mkString(",")
@@ -99,7 +99,7 @@ case class DataSet(
     { 
       ses match {
         case None => Nil
-        case Some(x) => "SE"
+        case Some(x) => Vector("SE")
       }
     }
 
@@ -121,7 +121,7 @@ case class DataSet(
       { 
         ses match {
           case None => Nil
-          case Some(x) => x.value(i).toString
+          case Some(x) => Vector(x.value(i).toString)
         }
       }
       "<tr>" + x.map("<td>" + _ + "</td>").mkString + "</tr>"
@@ -133,7 +133,7 @@ case class DataSet(
     { 
       ses match {
         case None => Nil
-        case Some(x) => "SE"
+        case Some(x) => Vector("SE")
       }
     }
 
