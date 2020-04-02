@@ -27,6 +27,17 @@ class IANZController @Inject()(val data: Data, val controllerComponents: Control
   }
 
   /**
+   * Return the set of ids and names.
+   */
+  def ids = Action { implicit request: Request[AnyContent] =>
+    val ids = data.ids.keys.toVector.sorted
+    val names = ids.map(id => {
+      s""""${data.ids(id)}""""
+    })
+    Ok(s"""{"id":[${ids.mkString(",")}],"names":[${names.mkString(",")}]}""").as("application/json")
+  }
+
+  /**
    * Take id and return indicator name.
    */
   def title(id: Int) = Action { implicit request: Request[AnyContent] =>

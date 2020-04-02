@@ -4,6 +4,7 @@ GET     /                           controllers.IANZController.index()
 GET     /indicator/:name            controllers.IANZController.indicator(name: String)
 
 # API
+GET     /api/ids                    controllers.IANZController.ids()
 GET     /api/title                  controllers.IANZController.title(id: Int)
 GET     /api/description            controllers.IANZController.description(id: Int)
 GET     /api/image                  controllers.IANZController.image(id: Int)
