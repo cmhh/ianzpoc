@@ -4,7 +4,7 @@ This project contains a simplified version of the [Wellbeing Indicators](https:/
 
 The PoC is written in Scala using the [Play Framework](https://www.playframework.com/), and, essentially, consists of a single template that is populated dynamically.  The indicators themselves are provided as files in specific formats, all placed in a single folder which is read by configuration.  The project is provided with just 5 indicators, but if more were added to the folder, then all that would be required to include them would be to restart the application.
 
-As a further conceptual demonstration, a small number of endpoints have also created so that data can also be retrieved programmatically.
+As a further conceptual demonstration, a small number of endpoints have also been created so that data can also be retrieved programmatically.
 
 
 # Running the Application / Web Site
@@ -27,7 +27,7 @@ By default, the app assumes that indicator data can be read from `./indicators`.
 <path-to-app>/bin/ianzpoc -Dappdata=/path-to-indicators/indicators
 ```
 
-The app will run on port 9000, so can be accessed at `http://localhost:9000`.
+To view the application, visit `http://localhost:9000`.
 
 
 # Screenshots

@@ -9,5 +9,5 @@ docker build -t ianzpoc:[jvm|graalvm] <target-folder>
 To run the application:
 
 ```bash
-docker run -d --rm --name ianz -p 9000:9000 ianzgraalvm
+docker run -d --rm --name ianz -p 9000:9000 ianzpoc:[jvm|graalvm]
 ```
