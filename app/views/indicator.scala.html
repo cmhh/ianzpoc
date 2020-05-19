@@ -11,7 +11,7 @@
     <main id="main" class="main">
       <div class="container">
         <h1>Sorry, we couldn't find that indicator...</h1>
-        <p>Return to <a href=/>main page</a>.</p>
+        <p>Return to <a href=/ianzpoc/>main page</a>.</p>
       </div>
     </main>
   }
@@ -47,7 +47,7 @@
               <h2 class="h4 secondary-nav-title">Related topics</h2>
               <ul class="secondary-nav">
                 @for(ind <- data.config.keys){
-                  <li><a href=/indicator/@ind class="related-pages-link">@{data.config(ind).name}</a></li>
+                  <li><a href=/ianzpoc/indicator/@ind class="related-pages-link">@{data.config(ind).name}</a></li>
                 }
                 <li class="navbar-toggle"><i class="fa fa-ellipsis-h"></i></li>
               </ul>
@@ -67,7 +67,7 @@
                     <h2 class="h4 secondary-nav-title">Related topics</h2>
                     <ul class="secondary-nav">                      
                       @for(ind <- data.config.keys){
-                        <li><a href=/indicator/@ind class="related-pages-link">@{data.config(ind).name}</a></li>
+                        <li><a href=/ianzpoc/indicator/@ind class="related-pages-link">@{data.config(ind).name}</a></li>
                       }
                     </ul>
                     <div class="clear">
@@ -151,14 +151,14 @@
                   <div class="row download-document">
                     <div class="col-sm-6 ">
                       <div>
-                        <a href="/api/dataset?id=@{data.names(name)}">@title downloadable</a>
+                        <a href="/ianzpoc/api/dataset?id=@{data.names(name)}">@title downloadable</a>
                       </div>
                       <div>
                         Comma Separated Values File (CSV)
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <a href="/api/dataset?id=@{data.names(name)}" class="btn-data-download pull-right">
+                      <a href="/ianzpoc/api/dataset?id=@{data.names(name)}" class="btn-data-download pull-right">
                         <span class="btn-data-download-title">Download</span>
                       </a>
                     </div>
@@ -171,14 +171,14 @@
                   <div class="row download-document">
                     <div class="col-sm-6 ">
                       <div>
-                        <a href="/api/metadata?id=@{data.names(name)}" target="_blank">@title metadata</a>
+                        <a href="/ianzpoc/api/metadata?id=@{data.names(name)}" target="_blank">@title metadata</a>
                       </div>
                       <div>
                         JavaScript Object Notation (JSON)
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <a href="/api/metadata?id=@{data.names(name)}" class="btn-data-download pull-right" target="_blank">
+                      <a href="/ianzpoc/api/metadata?id=@{data.names(name)}" class="btn-data-download pull-right" target="_blank">
                         <span class="btn-data-download-title">Download</span>
                       </a>
                     </div>

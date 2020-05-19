@@ -66,6 +66,13 @@ class IANZController @Inject()(val data: Data, val controllerComponents: Control
   }
 
   /**
+   * Take id and return config for indicator.
+   */
+  def config(id: Int) = Action { implicit request: Request[AnyContent] =>
+    Ok(data.config(data.ids(id)).toString).as("application/json")
+  }
+
+  /**
    * Take id and return CSV data for indicator.
    */
   def dataset(id: Int) = Action { implicit request: Request[AnyContent] =>

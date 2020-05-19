@@ -9,6 +9,7 @@ GET     /api/title                  controllers.IANZController.title(id: Int)
 GET     /api/description            controllers.IANZController.description(id: Int)
 GET     /api/image                  controllers.IANZController.image(id: Int)
 GET     /api/metadata               controllers.IANZController.metadata(id: Int)
+GET     /api/config                 controllers.IANZController.config(id: Int)
 GET     /api/dataset                controllers.IANZController.dataset(id: Int)
 
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

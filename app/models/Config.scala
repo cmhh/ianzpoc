@@ -9,7 +9,10 @@ import scala.io.Source
 case class Config(
   name: String, description: String,
   factoidValue: String, factoidDescription: String
-)
+){
+  override def toString = 
+    s"""{"name":"$name","description":"$description","factoid":{"value":"$factoidValue","description":"$factoidDescription"}}"""
+}
 
 case object Config {
   def apply(file: File): Config = {

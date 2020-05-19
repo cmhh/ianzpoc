@@ -9,3 +9,5 @@ target
 .g8
 **/.access^
 doc
+**/*.jar
+**/*.zip
